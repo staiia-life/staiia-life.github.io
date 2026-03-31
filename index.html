@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Links | Analog Style</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #e8d7c3 0%, #f4ead0 50%, #e9dcc8 100%);
+      background-attachment: fixed;
+      color: #2d2416;
+      font-family: 'Segoe UI', 'Comic Sans MS', cursive, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: 
+        repeating-linear-gradient(0deg, rgba(0,0,0,.02) 0px, rgba(0,0,0,.02) 1px, transparent 1px, transparent 2px),
+        repeating-linear-gradient(90deg, rgba(0,0,0,.02) 0px, rgba(0,0,0,.02) 1px, transparent 1px, transparent 2px);
+      background-size: 4px 4px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      max-width: 580px;
+      width: 100%;
+    }
+
+    .card {
+      background: linear-gradient(to bottom, #f5ede2, #f0e6d8);
+      border: 2px solid #c9a876;
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
+      position: relative;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.6);
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect fill="%23faf6f0" width="100" height="100"/><circle cx="10" cy="10" r="1" fill="%23e6dccf" opacity="0.4"/><circle cx="60" cy="40" r="0.5" fill="%23d9c9ba" opacity="0.3"/><circle cx="80" cy="20" r="1.5" fill="%23e6dccf" opacity="0.2"/></svg>');
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .decorative-element {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    .star-small {
+      width: 24px;
+      height: 24px;
+      top: 40px;
+      left: 30px;
+    }
+
+    .star-medium {
+      width: 32px;
+      height: 32px;
+      top: 120px;
+      right: 40px;
+    }
+
+    .star-lg {
+      width: 40px;
+      height: 40px;
+      bottom: 80px;
+      left: 50px;
+    }
+
+    .camera-icon {
+      width: 48px;
+      height: 48px;
+      top: 250px;
+      right: 35px;
+    }
+
+    .key-icon {
+      width: 36px;
+      height: 36px;
+      bottom: 140px;
+      right: 45px;
+    }
+
+    .house-icon {
+      width: 40px;
+      height: 40px;
+      bottom: 280px;
+      right: 30px;
+    }
+
+    .letter-icon {
+      width: 44px;
+      height: 44px;
+      top: 160px;
+      left: 20px;
+    }
+
+    .crown-icon {
+      width: 48px;
+      height: 48px;
+      top: 80px;
+      right: 25px;
+    }
+
+    h1 {
+      margin: 0 0 0.2rem;
+      font-size: 2.4rem;
+      color: #2d2416;
+      font-weight: 700;
+      position: relative;
+      z-index: 3;
+      text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
+    }
+
+    .subtitle {
+      margin: 0 0 2rem;
+      color: #d95a3f;
+      font-size: 0.95rem;
+      font-weight: 600;
+      position: relative;
+      z-index: 3;
+      letter-spacing: 0.5px;
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.95rem;
+      position: relative;
+      z-index: 3;
+    }
+
+    .link-wrapper {
+      position: relative;
+      transform-origin: center;
+    }
+
+    .link {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      color: #2d2416;
+      text-decoration: none;
+      background: linear-gradient(to bottom, #fef9f3, #faf3eb);
+      border: 2px solid #d4a574;
+      padding: 0.9rem 1.2rem;
+      border-radius: 6px;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+      font-weight: 600;
+      font-size: 1.05rem;
+      box-shadow: 2px 4px 12px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.8);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .link::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.3) 50%, transparent 60%);
+      opacity: 0;
+      transition: opacity 300ms ease;
+      pointer-events: none;
+    }
+
+    .link:hover {
+      transform: translateY(-3px) rotate(0.5deg);
+      box-shadow: 3px 8px 20px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.9);
+      background: linear-gradient(to bottom, #fff9f5, #fef3ed);
+    }
+
+    .link:hover::before {
+      opacity: 1;
+    }
+
+    .link-icon {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      opacity: 0.85;
+    }
+
+    .link-text {
+      flex: 1;
+    }
+
+    .cta {
+      margin-top: 1.8rem;
+      padding: 1.2rem;
+      background: linear-gradient(135deg, #d95a3f 0%, #c94a32 100%);
+      border-radius: 8px;
+      color: #f5ede2;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+      letter-spacing: 0.5px;
+      position: relative;
+      z-index: 3;
+      box-shadow: 0 4px 12px rgba(217, 90, 63, 0.35);
+    }
+
+    @media (max-width: 480px) {
+      .card { padding: 2rem 1.5rem; }
+      h1 { font-size: 2rem; }
+      .link { font-size: 0.98rem; padding: 0.8rem 1rem; }
+      .decorative-element { opacity: 0.4; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Decorative SVG elements -->
+    <svg class="decorative-element star-small" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2L15.09 10.26H23.36L17.54 15.46L19.63 23.72L12 18.52L4.37 23.72L6.46 15.46L0.64 10.26H8.91L12 2Z" fill="#d4a56a" stroke="#c9955a" stroke-width="0.5"/>
+    </svg>
+
+    <svg class="decorative-element star-medium" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2L15.09 10.26H23.36L17.54 15.46L19.63 23.72L12 18.52L4.37 23.72L6.46 15.46L0.64 10.26H8.91L12 2Z" fill="#d4a56a" stroke="#c9955a" stroke-width="0.5"/>
+    </svg>
+
+    <svg class="decorative-element star-lg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2L15.09 10.26H23.36L17.54 15.46L19.63 23.72L12 18.52L4.37 23.72L6.46 15.46L0.64 10.26H8.91L12 2Z" fill="#e6b896" stroke="#d4a574" stroke-width="0.5"/>
+    </svg>
+
+    <svg class="decorative-element camera-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="8" y="12" width="32" height="24" rx="2" stroke="#5a4a3a" stroke-width="1.5" fill="#f5ede2"/>
+      <circle cx="24" cy="24" r="6" stroke="#5a4a3a" stroke-width="1.5"/>
+      <circle cx="28" cy="16" r="2" fill="#5a4a3a"/>
+    </svg>
+
+    <svg class="decorative-element key-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="14" cy="24" r="8" stroke="#8b7355" stroke-width="1.5"/>
+      <line x1="22" y1="24" x2="40" y2="24" stroke="#8b7355" stroke-width="1.5"/>
+      <rect x="34" y="20" width="8" height="8" rx="1" stroke="#8b7355" stroke-width="1.5" fill="none"/>
+    </svg>
+
+    <svg class="decorative-element house-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="24,8 40,24 38,24 38,40 10,40 10,24 8,24" stroke="#6b8e5f" stroke-width="1.5" fill="none"/>
+      <rect x="18" y="28" width="12" height="12" stroke="#6b8e5f" stroke-width="1.5" fill="none"/>
+      <rect x="21" y="28" width="6" height="8" stroke="#6b8e5f" stroke-width="1" fill="none"/>
+    </svg>
+
+    <svg class="decorative-element letter-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="6" y="10" width="36" height="28" rx="2" stroke="#8b7355" stroke-width="1.5" fill="none"/>
+      <path d="M6 10L24 22L42 10" stroke="#8b7355" stroke-width="1.5" fill="none"/>
+    </svg>
+
+    <svg class="decorative-element crown-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 36H40V40H8Z" fill="#d4a56a" stroke="#c9955a" stroke-width="1"/>
+      <path d="M12 24L18 12L24 20L30 8L36 24" stroke="#d4a56a" stroke-width="2" fill="none"/>
+      <circle cx="18" cy="12" r="2" fill="#d4a56a"/>
+      <circle cx="24" cy="20" r="2" fill="#d4a56a"/>
+      <circle cx="30" cy="8" r="2" fill="#d4a56a"/>
+    </svg>
+
+    <article class="card">
+      <h1>My Links</h1>
+      <p class="subtitle">Like and subscribe it keeps the good vibes ALIVE!</p>
+      
+      <div class="links">
+        <div class="link-wrapper">
+          <a class="link" href="https://www.youtube.com/channel/your-channel" target="_blank" rel="noopener noreferrer">
+            <svg class="link-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            <span class="link-text">YouTube</span>
+          </a>
+        </div>
+
+        <div class="link-wrapper">
+          <a class="link" href="https://www.buymeacoffee.com/yourprofile" target="_blank" rel="noopener noreferrer">
+            <svg class="link-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20 3H4a1 1 0 0 0-1 1v8a6 6 0 0 0 6 6h.1a6 6 0 0 0 5.8-4.3V19a2 2 0 0 0 2 2h3a2 2 0 0 0 2-2v-8h1a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 9h-2v8h-3v-9.3A4 4 0 0 1 9 7H5V5h14v7z"/></svg>
+            <span class="link-text">Buy Me a Coffee</span>
+          </a>
+        </div>
+
+        <div class="link-wrapper">
+          <a class="link" href="https://gamma.app/?via=your-affiliate-code" target="_blank" rel="noopener noreferrer">
+            <svg class="link-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg>
+            <span class="link-text">Gamma App</span>
+          </a>
+        </div>
+
+        <div class="link-wrapper">
+          <a class="link" href="https://yourdomain.com/portugal-house-guide.pdf" target="_blank" rel="noopener noreferrer">
+            <svg class="link-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-8-6z"/><path d="M16 18H8v-2h8v2zm0-4H8v-2h8v2zm0-4H8V8h8v2z" fill="white"/></svg>
+            <span class="link-text">Buying a House in Portugal</span>
+          </a>
+        </div>
+
+        <div class="link-wrapper">
+          <a class="link" href="https://wa.me/351yourphone?text=Hello%20from%20your%20site" target="_blank" rel="noopener noreferrer">
+            <svg class="link-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48C18.25 1.23 15.17 0 12 0 5.38 0 0 5.38 0 12c0 2.11.55 4.17 1.61 6L0 24l6.35-1.61C8.82 23.46 10.4 24 12 24c6.62 0 12-5.38 12-12 0-3.17-1.23-6.25-3.48-8.52zM12 21.9c-1.66 0-3.29-.42-4.74-1.21l-.34-.2-3.52.9.9-3.52-.2-.34c-.8-1.45-1.22-3.09-1.22-4.74 0-5.52 4.48-10 10-10 2.67 0 5.19 1.04 7.07 2.93 1.88 1.88 2.93 4.4 2.93 7.07 0 5.52-4.48 10-10 10z"/></svg>
+            <span class="link-text">Mortgage Broker Contacts</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="cta">📧 Sent with Love ❤️</div>
+    </article>
+  </div>
+</body>
+</html>
